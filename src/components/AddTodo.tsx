@@ -1,14 +1,15 @@
 import { Plus } from "lucide-react";
-import Input from "./Input";
-import Button from "./Button";
+import Input from "./Input.tsx";
+import Button from "./Button.tsx";
 import { ADD_TODO, useTodo } from "../store/context";
 import { useState } from "react";
+import React from "react";
 
 const AddTodo = () => {
   const { dispatch } = useTodo();
-  const [text, setText] = useState("");
+  const [text, setText] = useState<string>("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (text.trim()) {
       dispatch({ type: ADD_TODO, payload: text });
@@ -20,7 +21,7 @@ const AddTodo = () => {
     <form onSubmit={handleSubmit} className='flex space-x-2 mb-4'>
       <Input
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setText(e.target.value)}
         placeholder='Add a new todo'
         className='flex-grow'
       />

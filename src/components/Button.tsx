@@ -1,4 +1,10 @@
-const Button = ({ onClick, children, variant = "primary" }) => {
+import React from "react";
+interface PropTypes extends React.ComponentPropsWithoutRef<"button">{
+  children: React.ReactNode,
+  variant?: string,
+
+}
+const Button = ({ onClick, children, variant = "primary" }:PropTypes) => {
   const baseClasses =
     "px-4 py-2 rounded-lg font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-opacity-50";
   const variantClasses = {
